@@ -6,18 +6,11 @@ import uuid
 class Book(SQLModel, table=True):
     __tablename__ = 'books'
 
-    uuid: uuid.UUID = Field(
-        sa_column=Column(
-            pg.UUID,
-            nullable=False,
-            primary_key=True,
-            default=uuid.uuid4
-        )
-    )
+    uid: uuid.UUID = Field(sa_column=Column(pg.UUID, nullable=False, primary_key=True, default=uuid.uuid4))
     title: str
     author: str
     publisher: str
-    publish_date: date
+    published_date: date
     page_count: int
     language: str
     created_at: datetime = Field(sa_column=Column(pg.TIMESTAMP, default=datetime.now()))
