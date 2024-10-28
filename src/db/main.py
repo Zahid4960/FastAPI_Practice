@@ -2,10 +2,17 @@ from sqlmodel import create_engine, SQLModel
 from sqlmodel.ext.asyncio.session import AsyncSession
 from sqlalchemy.ext.asyncio import AsyncEngine
 from sqlalchemy.orm import sessionmaker
+# from dotenv import load_dotenv
+# import os
+from src.config import DatabaseConfig
+
+# load_dotenv()
+#
+# DATABASE_URL = os.getenv('DATABASE_URL')
 
 async_engine = AsyncEngine(
     create_engine(
-        url="postgresql+asyncpg://postgres:%21%40%23DreamOnline123@localhost:5432/bookly_dev_db",
+        url=DatabaseConfig.DATABASE_URL,
         echo=True
     )
 )
