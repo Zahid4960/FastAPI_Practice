@@ -13,6 +13,12 @@ class DatabaseConfig:
 
     DATABASE_URL = f'postgresql+asyncpg://{user}:{password}@{host}:{port}/{db_name}'
 
+class RedisConfig:
+    redis_host = os.getenv('REDIS_HOST')
+    redis_port = int(os.getenv('REDIS_PORT'))
+
+    REDIS_DATABASE_URL = f'redis://{redis_host}:{redis_port}'
+
 class JWTConfig:
     jwt_secret = os.getenv('JWT_SECRET')
     jwt_algorithm = os.getenv('JWT_ALGORITHM')
